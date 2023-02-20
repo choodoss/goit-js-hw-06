@@ -12,6 +12,13 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+.container {
+  max-width: 1200px;
+}
+
+li {
+  list-style: none;
+}
 
 input {
   padding: 8px;
@@ -21,4 +28,22 @@ input {
 button {
   padding: 8px 12px;
   cursor: pointer;
+}
+
+.gallery{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.gallery__item {
+  flex-basis: calc((100% - (20px * 2)) / 2) ;
+}
+.gallery__img {
+  object-fit: cover;
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }

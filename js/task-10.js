@@ -14,21 +14,26 @@ btnDestroyEl.addEventListener('click', () => {
   destroyBoxes();
   btnCreateEl.removeEventListener('click', addBox);
 });
+const allEllements =[];
   let i = 0;
   let heightWidth = 30;
   let fontSize = 6;
-function addBox() {
+
+  function addBox() {
   if (i < inputNumberEl.value) {
     const box = document.createElement('div');
     box.setAttribute('style', `background-color: ${getRandomHexColor()}; height: ${heightWidth}px; width: ${heightWidth}px; font-size: ${fontSize}px; border-radius: 25% 10%; text-align: center;`);
     box.textContent = `${getRandomHexColor()}`;
-    containerBoxes.append(box)
+    allEllements.push(box);
+
     i += 1;
     heightWidth += 10;
     fontSize +=1;
     addBox();
   } else {
     inputNumberEl.value = '';
+    containerBoxes.append(...allEllements);
+    allEllements.splice(0, allEllements.length);
   }
 }
 

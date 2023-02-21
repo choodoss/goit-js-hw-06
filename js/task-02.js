@@ -17,3 +17,4 @@ ingredients.forEach(ingredient => {
 })
 console.log(ingredientsEL);
 
+liEL.textContent = element;

@@ -14,31 +14,30 @@ btnDestroyEl.addEventListener('click', () => {
   destroyBoxes();
   btnCreateEl.removeEventListener('click', addBox);
 });
-const allEllements =[];
-  let i = 0;
-  let heightWidth = 30;
-  let fontSize = 6;
 
-  function addBox() {
-  if (i < inputNumberEl.value) {
-    const box = document.createElement('div');
-    box.setAttribute('style', `background-color: ${getRandomHexColor()}; height: ${heightWidth}px; width: ${heightWidth}px; font-size: ${fontSize}px; border-radius: 25% 10%; text-align: center;`);
-    box.textContent = `${getRandomHexColor()}`;
-    allEllements.push(box);
+function addBox() {
 
-    i += 1;
-    heightWidth += 10;
-    fontSize +=1;
-    addBox();
+  if (inputNumberEl.value <= 0 || inputNumberEl > 100) {
+    alert('Помилка! Введіть число від 1 до 100')
+
   } else {
-    inputNumberEl.value = '';
-    containerBoxes.append(...allEllements);
-    allEllements.splice(0, allEllements.length);
+    let heightWidth = 30;
+    let fontSize = 6;
+    const boxes = [];
+    for (let i = 0; i < inputNumberEl.value; i += 1) {
+      const box = document.createElement('div');
+      box.setAttribute('style', `background-color: ${getRandomHexColor()}; height: ${heightWidth}px; width: ${heightWidth}px; font-size: ${fontSize}px; border-radius: 25% 10%; text-align: center;`);
+      box.textContent = `${getRandomHexColor()}`;
+      heightWidth += 10;
+      fontSize += 1;
+      boxes.push(box);
+    }
+    containerBoxes.append(...boxes);
   }
+  inputNumberEl.value = '0';
 }
 
 function destroyBoxes() {
-  i = 0;
-  heightWidth = 30;
   containerBoxes.innerHTML = '';
 }
+

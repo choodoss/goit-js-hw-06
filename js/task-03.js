@@ -15,21 +15,13 @@ const images = [
 ];
 
 const galleryEl = document.querySelector(".gallery");
-console.log(galleryEl);
-
-images.forEach(item => {
-const itemOfgalleryEl = document.createElement("li");
-itemOfgalleryEl.classList.add("gallery__item");
-
-const imgOfitemGalleryEl = document.createElement("img");
-imgOfitemGalleryEl.classList.add("gallery__img");
-imgOfitemGalleryEl.src = item.url;
-imgOfitemGalleryEl.width = 400;
-imgOfitemGalleryEl.alt = item.alt;
-itemOfgalleryEl.append(imgOfitemGalleryEl);
-galleryEl.append(itemOfgalleryEl);
-})
-
+const ImagesAll = images.map(({url, alt}) => {
+  const itemOfgalleryEl = document.createElement("li");
+  itemOfgalleryEl.classList.add("gallery__item");
+  itemOfgalleryEl.innerHTML = `<img class="gallery__img" src="${url}" width="400" alt="${alt}">`;
+  return itemOfgalleryEl;
+});
+galleryEl.append(...ImagesAll);
 
 
 

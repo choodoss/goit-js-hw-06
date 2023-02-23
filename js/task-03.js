@@ -16,12 +16,13 @@ const images = [
 
 const galleryEl = document.querySelector(".gallery");
 const ImagesAll = images.map(({url, alt}) => {
-  const itemOfgalleryEl = document.createElement("li");
-  itemOfgalleryEl.classList.add("gallery__item");
-  itemOfgalleryEl.innerHTML = `<img class="gallery__img" src="${url}" width="400" alt="${alt}">`;
-  return itemOfgalleryEl;
+  return `<li class="gallery__item"><img class="gallery__img" src="${url}" width="400" alt="${alt}"></li>`;
 });
-galleryEl.append(...ImagesAll);
+// Теж норм працює.
+// galleryEl.innerHTML = ImagesAll.join('');
+galleryEl.insertAdjacentHTML("beforeend", ImagesAll.join(""));
 
+// Чому цей метод створює тільки 1 картинку? і додає пустий <li>?
+// galleryEl.insertAdjacentHTML("afterbegin", ...ImagesAll);
 
 
